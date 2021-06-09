@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(
           icon: Icon(LineIcons.bell),
           title: Text(
-            'Notifications',
+            'Chat',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),

@@ -34,16 +34,13 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FlutterChat'),
+        title: Text('Chat'),
         actions: [
           DropdownButton(
             underline: Container(),
             icon: Icon(
               Icons.more_vert,
-              color: Theme
-                  .of(context)
-                  .primaryIconTheme
-                  .color,
+              color: Theme.of(context).primaryIconTheme.color,
             ),
             items: [
               DropdownMenuItem(
@@ -78,5 +75,4 @@ class _ChatPageState extends State<ChatPage> {
         ),
       ),
     );
-  }
-}
+  }}

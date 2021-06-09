@@ -14,8 +14,8 @@ class LandingPage extends StatelessWidget {
     );
 
     final logo = Container(
-      height: 100.0,
-      width: 100.0,
+      height: 150.0,
+      width: 150.0,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AvailableImages.appLogo,
@@ -31,7 +31,7 @@ class LandingPage extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 30.0,
+            fontSize: 50.0,
           ),
         ),
         Text(
@@ -56,7 +56,7 @@ class LandingPage extends StatelessWidget {
     final loginBtn = InkWell(
       onTap: () => Navigator.pushNamed(context, authViewRoute),
       child: Container(
-        height: 60.0,
+        height: 70.0,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7.0),
@@ -75,7 +75,7 @@ class LandingPage extends StatelessWidget {
         ),
       ),
     );
-    final registerBtn = InkWell(
+    /*final registerBtn = InkWell(
       //onTap: () => Navigator.pushNamed(context, TwitterViewRoute),
       onTap: () => Navigator.pushNamed(context, twitterViewRoute),
       child: Container(
@@ -86,7 +86,7 @@ class LandingPage extends StatelessWidget {
           border: Border.all(color: Colors.white),
           color: Colors.transparent,
         ),
-        child: Center(
+        /*child: Center(
           child: Text(
             //'Twitter Log In',
             'Twitter Log In',
@@ -96,9 +96,9 @@ class LandingPage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-        ),
+        ),*/
       ),
-    );
+    );*/
     /*final registerBtn = InkWell(
       onTap: () => Navigator.pushNamed(context, loginViewRoute),
       child: Container(
@@ -128,13 +128,14 @@ class LandingPage extends StatelessWidget {
 
     final buttons = Padding(
       padding: EdgeInsets.only(
-        top: 80.0,
+        top: 100.0,
         bottom: 30.0,
         left: 30.0,
         right: 30.0,
       ),
       child: Column(
-        children: <Widget>[loginBtn, SizedBox(height: 20.0), registerBtn],
+        //children: <Widget>[loginBtn, SizedBox(height: 20.0), registerBtn],
+        children: <Widget>[loginBtn, SizedBox(height: 20.0)],
       ),
     );
 

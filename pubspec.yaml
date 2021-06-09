@@ -54,7 +54,7 @@ dev_dependencies:
   firebase_auth:
   image_picker: ^0.6.5+3
   firebase_storage:
-  firebase_messaging:
+  firebase_messaging: ^6.0.13
   flutter_twitter_login: ^1.1.0
   provider: ^5.0.0
   http:

@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
   MessageBubble(
@@ -83,4 +83,4 @@ class MessageBubble extends StatelessWidget {
       overflow: Overflow.visible,
     );
   }
-}*/
+}
