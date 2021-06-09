@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -6,12 +6,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:unify_app/chat/messages.dart';
 import 'package:unify_app/chat/new_message.dart';
 
-class ChatScreen extends StatefulWidget {
+class ChatPage extends StatefulWidget {
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
@@ -79,4 +79,4 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
     );
   }
-}*/
+}

@@ -1,14 +1,14 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:unify_app/chat/message_bubble.dart';
 
-import 'package:flutter_social_ui/chat/message_bubble.dart';
 
 class Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: FirebaseAuth.instance.currentUser(),
+      future: final FirebaseUser user = await auth.currentUser();,
       builder: (ctx, futureSnapshot) {
         if (futureSnapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -44,4 +44,4 @@ class Messages extends StatelessWidget {
             });
       },
     );
-  }*/
+  }

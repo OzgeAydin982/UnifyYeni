@@ -1,115 +1,69 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:unify_app/data/dummy_rec_data.dart';
+import 'package:unify_app/models/RecomInt.dart';
 import 'package:unify_app/utils/color.dart';
+import 'package:http/http.dart' as http;
 
-class RecommendationPage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-            child: ListView(
-              children: <Widget>[
-                Card(child: ListTile(title:
-                Text('Recommendations',
-                  style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.w600,
-                  ),)
-                )),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.person_outline_rounded),
-                    title: Text(
-                      'People/Posts',
-                      style: TextStyle(
-                        color: primaryDark,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(''),
-                    trailing: Icon(Icons.post_add),
-                    isThreeLine: true,
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.music_video_sharp),
-                    title: Text(
-                      'Music',
-                      style: TextStyle(
-                        color: primaryDark,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(''),
-                    //trailing: Icon(Icons.music_video_sharp),
-                    isThreeLine: true,
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.event),
-                    title: Text(
-                      'Events',
-                      style: TextStyle(
-                        color: primaryDark,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(''),
-                    //trailing: Icon(Icons.post_add),
-                    isThreeLine: true,
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.movie),
-                    title: Text(
-                      'Movies/Tv Series',
-                      style: TextStyle(
-                        color: primaryDark,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(''),
-                    trailing: Icon(Icons.tv_sharp),
-                    isThreeLine: true,
-                  ),
-                ),
+Future<RecomInt> fetchRecoms() async {
+  final response =
+  await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
 
-                /*Card(
-              child: ListTile(
-                leading: Icon(Icons.person_outline_rounded),
-                title: Text('People/Posts'),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: FlutterLogo(),
-                title: Text('One-line with leading widget'),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: FlutterLogo(),
-                title: Text('One-line with both widgets'),
-                trailing: Icon(Icons.more_vert),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: FlutterLogo(size: 56.0),
-                title: Text('Two-line ListTile'),
-                subtitle: Text('Here is a second line'),
-                trailing: Icon(Icons.more_vert),
-              ),
-            ),*/
-              ],
-            )));
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return RecomInt.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
   }
 }
+
+class RecommendationPage extends StatefulWidget {
+  @override
+  _RecommendationPageState createState() => _RecommendationPageState();
+}
+
+class _RecommendationPageState extends State<RecommendationPage> {
+
+   Future<RecomInt> futureRecom;
+
+  @override
+  void initState() {
+    super.initState();
+    futureRecom = fetchRecoms();
+  }
+
+
+  /*void _submitAuthForm(
+      String email,
+      String password,
+      String username,
+      bool isLogin,
+      BuildContext ctx,
+      ) async {
+    UserCredential authResult;*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      body: FutureBuilder<RecomInt>(
+        future: futureRecom,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Text(snapshot.data.title);
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+
+          // By default, show a loading spinner.
+          return CircularProgressIndicator();
+        },
+      )
+    );
+  }
+  }

@@ -6,7 +6,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:unify_app/utils/color.dart';
 import 'package:unify_app/screens/tabs/feeds.dart';
 import 'package:unify_app/screens/tabs/profile.dart';
-import 'package:unify_app/screens/tabs/notifications.dart';
+import 'package:unify_app/screens/tabs/chat.dart';
 import 'package:unify_app/screens/tabs/recommendation.dart';
 
 // Home Screen that has the Feeds Page as the main page layout
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     FeedsPage(),
-    NotificationsPage(),
+    ChatPage(),
     RecommendationPage(),
     ProfilePage()
   ];

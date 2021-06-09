@@ -57,6 +57,7 @@ dev_dependencies:
   firebase_messaging:
   flutter_twitter_login: ^1.1.0
   provider: ^5.0.0
+  http:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
