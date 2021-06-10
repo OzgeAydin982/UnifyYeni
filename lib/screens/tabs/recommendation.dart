@@ -1,26 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
-import 'package:unify_app/data/dummy_rec_data.dart';
-import 'package:unify_app/models/RecomInt.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:flutter/services.dart';
+import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/utils/color.dart';
-import 'package:http/http.dart' as http;
-
-Future<RecomInt> fetchRecoms() async {
-  final response =
-  await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return RecomInt.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
-}
 
 class RecommendationPage extends StatefulWidget {
   @override
@@ -28,42 +11,104 @@ class RecommendationPage extends StatefulWidget {
 }
 
 class _RecommendationPageState extends State<RecommendationPage> {
-
-   Future<RecomInt> futureRecom;
-
-  @override
-  void initState() {
-    super.initState();
-    futureRecom = fetchRecoms();
-  }
-
-
-  /*void _submitAuthForm(
-      String email,
-      String password,
-      String username,
-      bool isLogin,
-      BuildContext ctx,
-      ) async {
-    UserCredential authResult;*/
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: FutureBuilder<RecomInt>(
-        future: futureRecom,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Text(snapshot.data.title);
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
+    // Change Status Bar Color
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: primaryColor),
+    );
+    final pageTitle = Column(
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "Please Enter Your Twitter Username",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 30.0,
+          ),
+        ),
 
-          // By default, show a loading spinner.
-          return CircularProgressIndicator();
-        },
-      )
+      ],
+    );
+
+    final twitterUsernameField = TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Twitter Username',
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(
+          LineIcons.twitter,
+          color: Colors.white,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+      ),
+      style: TextStyle(color: Colors.white),
+      cursorColor: Colors.white,
+    );
+
+
+
+    final recomForm = Padding(
+      padding: EdgeInsets.only(top: 30.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[twitterUsernameField],
+        ),
+      ),
+    );
+
+    final getRecomBtn = Container(
+      margin: EdgeInsets.only(top: 40.0),
+      height: 60.0,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7.0),
+        border: Border.all(color: Colors.white),
+        color: Colors.white,
+      ),
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () => Navigator.pushNamed(context, GetRecViewRoute),
+        color: Colors.white,
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(7.0),
+        ),
+        child: Text(
+          'Get Recommendation',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 20.0,
+          ),
+        ),
+      ),
+    );
+
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(top: 150.0, left: 30.0, right: 30.0),
+          decoration: BoxDecoration(gradient: primaryGradient),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              pageTitle,
+              recomForm,
+              getRecomBtn,
+            ],
+          ),
+        ),
+      ),
     );
   }
-  }
+}

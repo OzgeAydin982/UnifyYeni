@@ -5,12 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/utils/color.dart';
 
-class GetTwitterUserPage extends StatefulWidget {
+class GetRecPage extends StatefulWidget {
   @override
-  _GetTwitterUserPageState createState() => _GetTwitterUserPageState();
+  _GetRecPageState createState() => _GetRecPageState();
 }
 
-class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
+class _GetRecPageState extends State<GetRecPage> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,7 +23,7 @@ class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
       //crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Please Enter Your Twitter Username",
+          "Our Recommendations for You!",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -34,12 +34,12 @@ class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
       ],
     );
 
-    final usernameField = TextFormField(
+    final recField = TextFormField(
       decoration: InputDecoration(
-        labelText: 'Twitter Username',
+        labelText: '',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
-          LineIcons.envelope,
+          LineIcons.twitter_square,
           color: Colors.white,
         ),
         enabledBorder: UnderlineInputBorder(
@@ -49,24 +49,59 @@ class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
           borderSide: BorderSide(color: Colors.white),
         ),
       ),
-      keyboardType: TextInputType.emailAddress,
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,
     );
 
+    final recSecField = TextFormField(
+      decoration: InputDecoration(
+        labelText: '',
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(
+          LineIcons.twitter_square,
+          color: Colors.white,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+      ),
+      style: TextStyle(color: Colors.white),
+      cursorColor: Colors.white,
+    );
 
+    final recThirdField = TextFormField(
+      decoration: InputDecoration(
+        labelText: '',
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(
+          LineIcons.twitter_square,
+          color: Colors.white,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+      ),
+      style: TextStyle(color: Colors.white),
+      cursorColor: Colors.white,
+    );
 
     final recomForm = Padding(
       padding: EdgeInsets.only(top: 30.0),
       child: Form(
         key: _formKey,
         child: Column(
-          children: <Widget>[usernameField],
+          children: <Widget>[recField, recSecField, recThirdField],
         ),
       ),
     );
 
-    final getRecomBtn = Container(
+    /*final getRecomBtn = Container(
       margin: EdgeInsets.only(top: 40.0),
       height: 60.0,
       width: MediaQuery.of(context).size.width,
@@ -77,20 +112,20 @@ class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
       ),
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, wordsViewRoute),
+        onPressed: () => Navigator.pushNamed(context, GetRecViewRoute),
         color: Colors.white,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(7.0),
         ),
         child: Text(
-          'Sign Up with LinkedIN',
+          '',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20.0,
           ),
         ),
       ),
-    );
+    );*/
 
 
     return Scaffold(
@@ -105,7 +140,7 @@ class _GetTwitterUserPageState extends State<GetTwitterUserPage> {
             children: <Widget>[
               pageTitle,
               recomForm,
-              getRecomBtn,
+              //getRecomBtn,
             ],
           ),
         ),

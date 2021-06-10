@@ -7,6 +7,7 @@ import 'package:unify_app/screens/login.dart';
 import 'package:unify_app/screens/signup.dart';
 import 'package:unify_app/screens/words.dart';
 import 'package:unify_app/screens/auth.dart';
+import 'package:unify_app/screens/GetRec.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
 
@@ -23,6 +24,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => WordsPage());
     case authViewRoute:
       return MaterialPageRoute(builder: (context) => AuthPage());
+    case GetRecViewRoute:
+      return MaterialPageRoute(builder: (context) => GetRecPage());
     /*case resetPasswordViewRoute:
       return MaterialPageRoute(builder: (context) => ResetPasswordScreen());
     case chatDetailsViewRoute:

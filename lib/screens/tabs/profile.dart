@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     userImage,
-                    SizedBox(width: 10.0),
+                    SizedBox(width: 20.0),
                     userNameLocation
                   ],
                 ),
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
     );
 
     final logoutBtn = Container(
-      margin: EdgeInsets.only(top: 0.0),
+      margin: EdgeInsets.only(top: 50.0),
       height: 64.0,
       width: MediaQuery
           .of(context)
@@ -114,7 +114,7 @@ class ProfilePage extends StatelessWidget {
         color: Colors.white,
       ),
       child: RaisedButton(
-        elevation: 5.0,
+        elevation: 7.0,
         onPressed: () => Navigator.pushNamed(context, landingViewRoute),
         color: primaryLight,
         shape: new RoundedRectangleBorder(
@@ -138,7 +138,7 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 280.0,
+          height: 278.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -146,10 +146,10 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               _buildIconTile(
-                  Icons.favorite, primaryColor.withOpacity(0.6), 'Likes'),
+                  LineIcons.heart, primaryColor.withOpacity(0.6), 'Like Categories: Hiking, Swimming, TV Shows'),
               hr,
-              _buildIconTile(LineIcons.user_plus, primaryColor.withOpacity(0.6),
-                  'Find Friends'),
+              /*_buildIconTile(LineIcons.user_plus, primaryColor.withOpacity(0.6),
+                  'Find Friends'),*/
               hr,
               _buildIconTile(
                   LineIcons.cogs, primaryColor.withOpacity(0.6), 'Settings'),
@@ -245,7 +245,7 @@ class ProfilePage extends StatelessWidget {
     return ListTile(
       title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
       leading: Container(
-        height: 30.0,
+        height: 100.0,
         width: 30.0,
         decoration: BoxDecoration(
           color: color,

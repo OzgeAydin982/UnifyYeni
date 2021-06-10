@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 //import 'package:flutter_social_ui/widgets/posts_carousel.dart';
 
 import 'package:line_icons/line_icons.dart';
+import 'package:unify_app/screens/tabs/recommendation.dart';
 import 'package:unify_app/utils/color.dart';
 import 'package:unify_app/screens/tabs/feeds.dart';
 import 'package:unify_app/screens/tabs/profile.dart';
 import 'package:unify_app/screens/tabs/chat.dart';
-import 'package:unify_app/screens/tabs/recommendation.dart';
+
+import 'RecomInt.dart';
 
 // Home Screen that has the Feeds Page as the main page layout
 // FeedsPage, NotificationsPage(), RecommendationPage(), ProfilePage() are a part of the Bottom Navigation Bar
