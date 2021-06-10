@@ -65,6 +65,7 @@ class _RecomIntPageState extends State<RecomIntPage> {
   Widget build(BuildContext context) {
 
     return Row(
+
         mainAxisSize: MainAxisSize.max,
         children: [Expanded(
           flex: 2, // 20%
@@ -84,7 +85,7 @@ class _RecomIntPageState extends State<RecomIntPage> {
               else
                 data += snapshot.data.result[i];
             }
-            return Text(data, style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.3,color: Colors.white));
+            return Text(data, style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5,color: Colors.white));
 
 
             return Text(snapshot.data.result[0]);
