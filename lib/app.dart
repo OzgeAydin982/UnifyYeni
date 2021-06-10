@@ -5,7 +5,6 @@ import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/routing/router.dart' as router;
 
 //import 'package:firebase_auth/firebase_auth.dart';
-
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

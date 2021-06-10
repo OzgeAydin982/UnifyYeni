@@ -4,15 +4,28 @@ import 'package:line_icons/line_icons.dart';
 import 'package:flutter/services.dart';
 import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/utils/color.dart';
-
+import 'package:unify_app/utils/globals.dart' as globals;
 class RecommendationPage extends StatefulWidget {
   @override
   _RecommendationPageState createState() => _RecommendationPageState();
 }
+class UserNameInput{
+  final String userName;
+
+  UserNameInput(this.userName);
+}
 
 class _RecommendationPageState extends State<RecommendationPage> {
   final _formKey = GlobalKey<FormState>();
-
+  final myController = TextEditingController();
+  void SetDataAndOpenRec(){
+    if(myController.text != null && myController.text.length > 0){
+      globals.inputdata = UserNameInput(myController.text);
+      Navigator.pushNamed(context, GetRecomIntViewRoute);
+    }else{
+      //TODO: Error text doldur diye
+    }
+  }
   @override
   Widget build(BuildContext context) {
     // Change Status Bar Color
@@ -35,6 +48,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
     );
 
     final twitterUsernameField = TextFormField(
+      controller: myController,
       decoration: InputDecoration(
         labelText: 'Twitter Username',
         labelStyle: TextStyle(color: Colors.white),
@@ -76,7 +90,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
       ),
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, GetRecViewRoute),
+        onPressed: SetDataAndOpenRec,
         color: Colors.white,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(7.0),

@@ -1,21 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class RecomInt {
-  final int userId;
-  final int id;
-  final String title;
+  final List<String> result;
 
   RecomInt({
-    @required this.userId,
-    @required this.id,
-    @required this.title,
+    @required this.result,
   });
 
   factory RecomInt.fromJson(Map<String, dynamic> json) {
+
     return RecomInt(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
+      result: json['result'].cast<String>()
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:unify_app/routing/routes.dart';
+import 'package:unify_app/screens/RecomInt.dart';
 import 'package:unify_app/screens/home.dart';
 import 'package:unify_app/screens/landing.dart';
 import 'package:unify_app/screens/login.dart';
@@ -26,6 +27,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => AuthPage());
     case GetRecViewRoute:
       return MaterialPageRoute(builder: (context) => GetRecPage());
+    case GetRecomIntViewRoute:
+      return MaterialPageRoute(builder: (context) => RecomIntPage());
     /*case resetPasswordViewRoute:
       return MaterialPageRoute(builder: (context) => ResetPasswordScreen());
     case chatDetailsViewRoute:

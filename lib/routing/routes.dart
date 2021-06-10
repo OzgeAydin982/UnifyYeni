@@ -10,4 +10,5 @@ const String chatDetailsViewRoute = 'chat_details';
 const String userDetailsViewRoute = 'user_details';
 const String authViewRoute = 'auth';
 const String twitterViewRoute = 'TwitterLogin';
-const String GetRecViewRoute = 'getRec';
+const String GetRecViewRoute = 'GetRec';
+const String GetRecomIntViewRoute = 'RecomInt';

@@ -3,9 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:unify_app/app.dart';
 import 'package:unify_app/utils/color.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:dcdg/dcdg.dart';
 //import 'package:flutter_linkedin/linkedloginflutter.dart';
-
+import 'utils/globals.dart' as globals;
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: primaryDark

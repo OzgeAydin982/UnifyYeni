@@ -146,7 +146,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               _buildIconTile(
-                  LineIcons.heart, primaryColor.withOpacity(0.6), 'Like Categories: Hiking, Swimming, TV Shows'),
+                  LineIcons.heart, primaryColor.withOpacity(0.6), 'Liked Interests: Hiking, Swimming, TV Shows'),
               hr,
               /*_buildIconTile(LineIcons.user_plus, primaryColor.withOpacity(0.6),
                   'Find Friends'),*/
