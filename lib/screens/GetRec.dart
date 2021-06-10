@@ -38,7 +38,7 @@ class GetRecPage extends StatelessWidget {
 
     final emailField = TextFormField(
       decoration: InputDecoration(
-        labelText: 'User1',
+        labelText: 'jennydynamic',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
           LineIcons.twitter,
@@ -58,7 +58,7 @@ class GetRecPage extends StatelessWidget {
 
     final passwordField = TextFormField(
       decoration: InputDecoration(
-        labelText: 'User2',
+        labelText: 'alicethorns',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
           LineIcons.twitter,
@@ -78,7 +78,7 @@ class GetRecPage extends StatelessWidget {
     );
     final userField = TextFormField(
       decoration: InputDecoration(
-        labelText: 'User2',
+        labelText: 'catenjoin',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
           LineIcons.twitter,
