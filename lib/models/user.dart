@@ -12,7 +12,7 @@ class MyUser {
 }
 
 final List<MyUser> myusers = [
-  MyUser("1", 'Alice Stone', AvailableImages.woman1['assetPath'], 'USA','F', 29),
+  MyUser("1", 'Alice Wonder', AvailableImages.woman1['assetPath'], 'USA','F', 29),
   MyUser("2", 'Robin Watkins', AvailableImages.man1['assetPath'], 'USA', 'F', 24),
   MyUser("3", 'Craig Jordan', AvailableImages.man2['assetPath'], 'USA', 'M', 28),
   MyUser("4", 'Charlotte Mckenzie', AvailableImages.woman2['assetPath'], 'USA','F', 23),

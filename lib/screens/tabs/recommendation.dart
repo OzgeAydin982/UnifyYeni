@@ -18,12 +18,21 @@ class UserNameInput{
 class _RecommendationPageState extends State<RecommendationPage> {
   final _formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
+
   void SetDataAndOpenRec(){
+    if(myController.text != null && myController.text.length > 0){
+      globals.inputdata = UserNameInput(myController.text);
+      Navigator.pushNamed(context, GetRecViewRoute);
+    }else{
+      //TODO: Error text doldur
+    }
+  }
+  void SetDataAndOpenIntRec(){
     if(myController.text != null && myController.text.length > 0){
       globals.inputdata = UserNameInput(myController.text);
       Navigator.pushNamed(context, GetRecomIntViewRoute);
     }else{
-      //TODO: Error text doldur diye
+      //TODO: Error text doldur
     }
   }
   @override
@@ -51,7 +60,8 @@ class _RecommendationPageState extends State<RecommendationPage> {
       controller: myController,
       decoration: InputDecoration(
         labelText: 'Twitter Username',
-        labelStyle: TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w600,
+          fontSize: 20.0,),
         prefixIcon: Icon(
           LineIcons.twitter,
           color: Colors.white,
@@ -80,7 +90,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
     );
 
     final getRecomBtn = Container(
-      margin: EdgeInsets.only(top: 40.0),
+      margin: EdgeInsets.only(top: 80.0),
       height: 60.0,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -96,7 +106,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
           borderRadius: new BorderRadius.circular(7.0),
         ),
         child: Text(
-          'Get Recommendation',
+          'Get User Recommendation',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20.0,
@@ -105,6 +115,31 @@ class _RecommendationPageState extends State<RecommendationPage> {
       ),
     );
 
+    final getIntBtn = Container(
+      margin: EdgeInsets.only(top: 60.0),
+      height: 60.0,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7.0),
+        border: Border.all(color: Colors.white),
+        color: Colors.white,
+      ),
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: SetDataAndOpenIntRec,
+        color: Colors.white,
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(7.0),
+        ),
+        child: Text(
+          'Get Interest Categories',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 20.0,
+          ),
+        ),
+      ),
+    );
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -119,6 +154,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
               pageTitle,
               recomForm,
               getRecomBtn,
+              getIntBtn,
             ],
           ),
         ),

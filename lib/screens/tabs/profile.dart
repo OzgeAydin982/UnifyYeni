@@ -150,9 +150,9 @@ class ProfilePage extends StatelessWidget {
               hr,
               /*_buildIconTile(LineIcons.user_plus, primaryColor.withOpacity(0.6),
                   'Find Friends'),*/
-              hr,
+              /*hr,
               _buildIconTile(
-                  LineIcons.cogs, primaryColor.withOpacity(0.6), 'Settings'),
+                  LineIcons.cogs, primaryColor.withOpacity(0.6), 'Settings'),*/
               hr,
               logoutBtn,
             ],

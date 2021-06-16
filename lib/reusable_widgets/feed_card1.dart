@@ -70,7 +70,7 @@ class FeedCard1 extends StatelessWidget {
       color: Colors.grey.withOpacity(0.6),
     );
 
-    final footer = Row(
+    /*final footer = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Icon(Icons.share),
@@ -92,7 +92,7 @@ class FeedCard1 extends StatelessWidget {
           ],
         ),
       ],
-    );
+    );*/
 
     return Container(
       height: 300.0,
@@ -145,7 +145,7 @@ class FeedCard1 extends StatelessWidget {
                         ),
                         descriptionText,
                         divider,
-                        footer
+                        //footer
                       ],
                     ),
                   ),

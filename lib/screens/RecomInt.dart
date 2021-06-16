@@ -1,8 +1,10 @@
 import 'dart:convert';
-
+import 'package:unify_app/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:unify_app/models/RecomInt.dart';
 import 'package:http/http.dart' as http;
+import 'package:unify_app/utils/color.dart';
+
 
 import 'tabs/recommendation.dart';
 import 'package:unify_app/utils/globals.dart' as globals;
@@ -63,20 +65,18 @@ class _RecomIntPageState extends State<RecomIntPage> {
 
   @override
   Widget build(BuildContext context) {
+    //return Row
 
-    return Row(
-
-        mainAxisSize: MainAxisSize.max,
-        children: [Expanded(
-          flex: 2, // 20%
-          child: Container(),
-        ),Expanded(
-          flex: 6,
-
-      child: FutureBuilder<RecomInt>(
+    return Container(
+      decoration: BoxDecoration(gradient: primaryGradient),
+      //decoration: BoxDecoration(color: Theme.of(context).primaryGradient,),
+    padding: EdgeInsets.all(20.0),
+child: Center(
+    child: FutureBuilder<RecomInt>(
         future: fetchRecoms(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            String cat = "Your Interest Categories                      ";
 
             String data = "";
             for(int i = 0; i < snapshot.data.result.length; i++){
@@ -85,10 +85,21 @@ class _RecomIntPageState extends State<RecomIntPage> {
               else
                 data += snapshot.data.result[i];
             }
-            return Text(data, style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5,color: Colors.white));
+            data = cat + data;
 
-
-            return Text(snapshot.data.result[0]);
+            return Text(data, style: TextStyle(decoration: TextDecoration.none, color: Colors.white, fontSize: 25));
+            /*color: Colors.white,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w500,
+          ),
+            Text(
+                "You can also set a password to log in next time!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500,
+                ),
+            return Text(snapshot.data.result[0]);*/
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
@@ -97,11 +108,12 @@ class _RecomIntPageState extends State<RecomIntPage> {
           return CircularProgressIndicator();
         },
       ),
-    ),
-          Expanded(
+),
+);
+         /*Expanded(
             flex: 2, // 20%
             child: Container(),
           ),
-        ]);
+        ]);*/
   }
   }
