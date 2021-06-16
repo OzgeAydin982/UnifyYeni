@@ -11,14 +11,14 @@ import 'package:unify_app/utils/globals.dart' as globals;
 
 
 
-class RecomIntPage extends StatefulWidget {
+class UserRecomIntPage extends StatefulWidget {
 
   UserNameInput _userNameInput ;
   @override
-  _RecomIntPageState createState() => _RecomIntPageState();
+  _UserRecomIntPageState createState() => _UserRecomIntPageState();
 }
 
-class _RecomIntPageState extends State<RecomIntPage> {
+class _UserRecomIntPageState extends State<UserRecomIntPage> {
   Future<RecomInt> fetchRecoms( ) async {
 
 
@@ -27,7 +27,7 @@ class _RecomIntPageState extends State<RecomIntPage> {
     }));
 
     final response =
-    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/getRecommendations'),
+    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/twUser'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -46,12 +46,13 @@ class _RecomIntPageState extends State<RecomIntPage> {
       throw Exception('Failed to load data:' + response.body);
     }
   }
-   Future<RecomInt> futureRecom;
+  Future<RecomInt> futureRecom;
   @override
   void initState() {
     super.initState();
 
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,25 +61,25 @@ class _RecomIntPageState extends State<RecomIntPage> {
     return Container(
       decoration: BoxDecoration(gradient: primaryGradient),
       //decoration: BoxDecoration(color: Theme.of(context).primaryGradient,),
-    padding: EdgeInsets.all(20.0),
-child: Center(
-    child: FutureBuilder<RecomInt>(
-        future: fetchRecoms(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            String cat = "Your Interest Categories                      ";
+      padding: EdgeInsets.all(20.0),
+      child: Center(
+        child: FutureBuilder<RecomInt>(
+          future: fetchRecoms(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              String cat = "Your Interest Categories                      ";
 
-            String data = "";
-            for(int i = 0; i < snapshot.data.result.length; i++){
-              if(i != snapshot.data.result.length - 1)
-                data += snapshot.data.result[i] + ", ";
-              else
-                data += snapshot.data.result[i];
-            }
-            data = cat + data;
+              String data = "";
+              for(int i = 0; i < snapshot.data.result.length; i++){
+                if(i != snapshot.data.result.length - 1)
+                  data += snapshot.data.result[i] + ", ";
+                else
+                  data += snapshot.data.result[i];
+              }
+              data = cat + data;
 
-            return Text(data, style: TextStyle(decoration: TextDecoration.none, color: Colors.white, fontSize: 25));
-            /*color: Colors.white,
+              return Text(data, style: TextStyle(decoration: TextDecoration.none, color: Colors.white, fontSize: 25));
+              /*color: Colors.white,
           fontSize: 18.0,
           fontWeight: FontWeight.w500,
           ),
@@ -90,20 +91,20 @@ child: Center(
                   fontWeight: FontWeight.w500,
                 ),
             return Text(snapshot.data.result[0]);*/
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
 
-          // By default, show a loading spinner.
-          return CircularProgressIndicator();
-        },
+            // By default, show a loading spinner.
+            return CircularProgressIndicator();
+          },
+        ),
       ),
-),
-);
-         /*Expanded(
+    );
+    /*Expanded(
             flex: 2, // 20%
             child: Container(),
           ),
         ]);*/
   }
-  }
+}

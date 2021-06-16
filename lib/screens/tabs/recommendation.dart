@@ -22,7 +22,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
   void SetDataAndOpenRec(){
     if(myController.text != null && myController.text.length > 0){
       globals.inputdata = UserNameInput(myController.text);
-      Navigator.pushNamed(context, GetRecViewRoute);
+      Navigator.pushNamed(context, GetUserRecomIntViewRoute);
     }else{
       //TODO: Error text doldur
     }

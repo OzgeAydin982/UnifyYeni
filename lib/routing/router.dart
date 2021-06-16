@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/screens/RecomInt.dart';
+import 'package:unify_app/screens/UserRecomInt.dart';
 import 'package:unify_app/screens/home.dart';
 import 'package:unify_app/screens/landing.dart';
 import 'package:unify_app/screens/login.dart';
@@ -25,11 +26,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => WordsPage());
     case authViewRoute:
       return MaterialPageRoute(builder: (context) => AuthPage());
-    case GetRecViewRoute:
-      return MaterialPageRoute(builder: (context) => GetRecPage());
+    /*case GetRecViewRoute:
+      return MaterialPageRoute(builder: (context) => GetRecPage());*/
     case GetRecomIntViewRoute:
       return MaterialPageRoute(builder: (context) => RecomIntPage());
-
+    case GetUserRecomIntViewRoute:
+      return MaterialPageRoute(builder: (context) => UserRecomIntPage());
 
     /*case resetPasswordViewRoute:
       return MaterialPageRoute(builder: (context) => ResetPasswordScreen());
