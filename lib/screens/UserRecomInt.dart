@@ -1,14 +1,14 @@
 import 'dart:convert';
+import 'package:unify_app/models/UserRecomInt.dart';
 import 'package:unify_app/utils/color.dart';
 import 'package:flutter/material.dart';
-import 'package:unify_app/models/RecomInt.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:unify_app/utils/color.dart';
 
 
 import 'tabs/recommendation.dart';
 import 'package:unify_app/utils/globals.dart' as globals;
-
 
 
 class UserRecomIntPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class UserRecomIntPage extends StatefulWidget {
 }
 
 class _UserRecomIntPageState extends State<UserRecomIntPage> {
-  Future<RecomInt> fetchRecoms( ) async {
+  Future<UserRecomInt> fetchRecoms( ) async {
 
 
     print(":"+jsonEncode(<String, String>{
@@ -27,7 +27,7 @@ class _UserRecomIntPageState extends State<UserRecomIntPage> {
     }));
 
     final response =
-    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/twUser'),
+    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/getRecommendations'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -35,18 +35,21 @@ class _UserRecomIntPageState extends State<UserRecomIntPage> {
         'userName': globals.inputdata.userName,
       }),
     );
-    print("CodeSSSSSSSSSSSSSSSSSSSSSSS:" +response.statusCode.toString());
     if (response.statusCode == 200 || response.statusCode == 201) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return RecomInt.fromJson(jsonDecode(response.body));
-    } else {
+      return UserRecomInt.fromJson(jsonDecode(response.body));
+    } else if(response.statusCode == 503) {
       // If the server did not return a 200 OK response,
       // then throw an exception.
+      //return Text("User not found!");
+
+    }else{
+      print("CodeSSSSSSSSSSSSSSSSSSSSSSS:" +response.statusCode.toString()+ "response.body:"+response.body);
       throw Exception('Failed to load data:' + response.body);
     }
   }
-  Future<RecomInt> futureRecom;
+  Future<UserRecomInt> futureRecom;
   @override
   void initState() {
     super.initState();
@@ -63,11 +66,11 @@ class _UserRecomIntPageState extends State<UserRecomIntPage> {
       //decoration: BoxDecoration(color: Theme.of(context).primaryGradient,),
       padding: EdgeInsets.all(20.0),
       child: Center(
-        child: FutureBuilder<RecomInt>(
+        child: FutureBuilder<UserRecomInt>(
           future: fetchRecoms(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              String cat = "Your Interest Categories                      ";
+              String cat = "Recommended Users for You!                     ";
 
               String data = "";
               for(int i = 0; i < snapshot.data.result.length; i++){

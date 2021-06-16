@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:unify_app/models/RecomInt.dart';
 import 'package:http/http.dart' as http;
 import 'package:unify_app/utils/color.dart';
-
-
 import 'tabs/recommendation.dart';
 import 'package:unify_app/utils/globals.dart' as globals;
-
 
 
 class RecomIntPage extends StatefulWidget {
@@ -27,7 +24,7 @@ class _RecomIntPageState extends State<RecomIntPage> {
     }));
 
     final response =
-    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/getRecommendations'),
+    await http.post(Uri.parse('https://unify-a-p-p.herokuapp.com/users/twUser'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
