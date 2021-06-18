@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:unify_app/models/feed.dart';
+
 import 'package:unify_app/reusable_widgets/feed_card1.dart';
 import 'package:unify_app/reusable_widgets/feed_card2.dart';
 import 'package:unify_app/reusable_widgets/feed_card3.dart';
 
 // Feeds Page appears in Home Screen as the main screen layout
 class FeedsPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
 
@@ -60,3 +62,4 @@ class FeedsPage extends StatelessWidget {
     );
   }
 }
+

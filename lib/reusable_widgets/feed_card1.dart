@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:unify_app/routing/routes.dart';
 import 'package:unify_app/models/feed.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:unify_app/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Feed Card 1 used in the Home Screen
 class FeedCard1 extends StatelessWidget {
+  final MyUser user  = new MyUser("", "", myusers[0].photo, "", "", 0, "");
+  final CollectionReference users = FirebaseFirestore.instance.collection('users');
   final Feed feed;
+  FeedCard1({Key key, this.feed}) : super(key: key);
 
-  const FeedCard1({Key key, this.feed}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final userimage = InkWell(
@@ -57,7 +61,8 @@ class FeedCard1 extends StatelessWidget {
     final descriptionText = Container(
       height: 80.0,
       child: Text(
-        feed.description,
+        "Hello I am Alice! Looking for a cat to adopt!",
+        //feed.description,
         style: TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.w600,

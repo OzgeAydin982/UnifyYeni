@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unify_app/models/user.dart';
+import 'package:unify_app/reusable_widgets/GetUserFeedText.dart';
 import 'package:unify_app/reusable_widgets/GetUserLocation.dart';
 import 'package:unify_app/reusable_widgets/GetUserName.dart';
 import 'package:unify_app/utils/color.dart';
@@ -10,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 class ProfilePage extends StatelessWidget {
-  final MyUser user  = new MyUser("", "", myusers[0].photo, "", "",0);
+  final MyUser user  = new MyUser("", "", myusers[0].photo, "", "", 0, "");
   final CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   @override
@@ -51,12 +52,13 @@ class ProfilePage extends StatelessWidget {
         children: <Widget>[
           GetUserName(u.uid),
           GetUserLocation(u.uid),
+          GetUserFeedText(u.uid),
           Text(
             user.location,
             style: TextStyle(
-              color: Colors.grey.withOpacity(0.6),
-              fontSize: 20.0,
-              fontWeight: FontWeight.w600,
+              color: Colors.grey.withOpacity(0.5),
+              fontSize: 30.0,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
@@ -102,7 +104,7 @@ class ProfilePage extends StatelessWidget {
     );
 
     final logoutBtn = Container(
-      margin: EdgeInsets.only(top: 50.0),
+      margin: EdgeInsets.only(top: 90.0),
       height: 64.0,
       width: MediaQuery
           .of(context)
@@ -138,7 +140,7 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 278.0,
+          height: 242.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -201,7 +203,7 @@ class ProfilePage extends StatelessWidget {
                         height: 350.0,
                       ),
                       Container(
-                        height: 250.0,
+                        height: 320.0,
                         decoration: BoxDecoration(gradient: secondGradient),
                       ),
 
