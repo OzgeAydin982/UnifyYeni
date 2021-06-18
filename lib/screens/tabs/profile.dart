@@ -14,6 +14,9 @@ class ProfilePage extends StatelessWidget {
   final MyUser user  = new MyUser("", "", myusers[0].photo, "", "", 0, "");
   final CollectionReference users = FirebaseFirestore.instance.collection('users');
 
+  ProfilePage({Key key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     MyUser pic = myusers[0];
@@ -61,9 +64,37 @@ class ProfilePage extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+
         ],
       ),
     );
+
+    /*TextField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'Enter a search term'
+      ),
+    );*/
+
+    /*final userText = Container(
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          GetUserFeedText(u.uid),
+          TextField(
+            "Enter ",
+            style: TextStyle(
+              color: Colors.grey.withOpacity(0.5),
+              fontSize: 30.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
+    );*/
 
     final userInfo = Stack(
       children: <Widget>[
@@ -92,7 +123,7 @@ class ProfilePage extends StatelessWidget {
                   children: <Widget>[
                     userImage,
                     SizedBox(width: 20.0),
-                    userNameLocation
+                    userNameLocation,
                   ],
                 ),
               ),
@@ -103,8 +134,49 @@ class ProfilePage extends StatelessWidget {
       ],
     );
 
+
+
+    final feedText = Container(
+    margin: EdgeInsets.only(top: 10.0),
+    height: 64.0,
+    width: MediaQuery
+        .of(context)
+        .size
+        .width,
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(7.0),
+    border: Border.all(color: Colors.white),
+    color: Colors.white,
+    ),
+
+    child: new TextFormField(
+
+      decoration: InputDecoration(
+        labelText: 'Enter Feed Text!',
+        labelStyle: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.w600,
+          fontSize: 20.0,),
+        prefixIcon: Icon(
+          LineIcons.edit,
+          color: primaryColor.withOpacity(0.6),
+          //color: Colors.deepPurple,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+      ),
+      style: TextStyle(color: Colors.deepPurple),
+      cursorColor: Colors.deepPurple,
+
+    ),
+
+    );
+
+
     final logoutBtn = Container(
-      margin: EdgeInsets.only(top: 90.0),
+      margin: EdgeInsets.only(top: 10.0),
       height: 64.0,
       width: MediaQuery
           .of(context)
@@ -140,7 +212,7 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 242.0,
+          height: 255.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -148,7 +220,9 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               _buildIconTile(
-                  LineIcons.heart, primaryColor.withOpacity(0.6), 'Liked Interests: Hiking, Swimming, TV Shows'),
+                  LineIcons.heart_o, primaryColor.withOpacity(0.6), 'Liked Interests: Hiking, Swimming, TV Shows'),
+              hr,
+              feedText,
               hr,
               /*_buildIconTile(LineIcons.user_plus, primaryColor.withOpacity(0.6),
                   'Find Friends'),*/
@@ -203,7 +277,7 @@ class ProfilePage extends StatelessWidget {
                         height: 350.0,
                       ),
                       Container(
-                        height: 320.0,
+                        height: 310.0,
                         decoration: BoxDecoration(gradient: secondGradient),
                       ),
 
